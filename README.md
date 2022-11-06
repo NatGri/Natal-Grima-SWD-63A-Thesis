@@ -25,4 +25,4 @@ C#
 
 ## Blockers:
 Hit an "error" in the tutorial, the test and train files are not being generated, hence cant continue forward, and also tensorflow is taking a lot of time to import at the moment.
-Moving forward, this rendition of the code will be developed on my PC rather than my Laptop.
+Moving forward, I am currently finding either a different tutorial/solution
