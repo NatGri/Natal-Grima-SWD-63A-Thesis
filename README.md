@@ -2,27 +2,23 @@
 
 ## Aim:
 The aim of this repository is to house all my progress towards my Thesis.
-The Thesis is an Object-Detection & Augmented Reality based application that will aid it's users throughout their daily food intake.
-Very Important that it needs to be a developed Phone Application.
+
+The thesis has developed to a mainly focused - Object Detection Application that will aid it's users throughout their daily food intake by aiming to simplify the process of food tracking. Will be a hybrid application so the user can use it from any device.
 
 ## Current Experimentation:
-Currently Following a Tensorflow Object Detection Tutorial (Tensorflow Lite can be used to develop phone applications (Since I am working on IOS this
-will work through Swift))
+Testing Supervised vs Un-Supervised Learning
 
 ## Notes:
 ###### Object Detection Agents Possible:
 Tensorflow Lite,
 YOLO-Tiny
 
-###### Programs That Might Be Used:
-OpenSpace3D,
-Unity,
-XCode
+###### Object Detection Being Used:
+YOLOv7 - Supervised Learning
+Tensorflow - Un-Supervised Learning
 
-###### Languages That Might Be Used:
-Python,
-C#
+###### Object Detection Agent for App:
+Tensorflow.js
 
-## Blockers:
-Hit an "error" in the tutorial, the test and train files are not being generated, hence cant continue forward, and also tensorflow is taking a lot of time to import at the moment.
-Moving forward, I am currently finding either a different tutorial/solution
+###### App Framework:
+React.js
