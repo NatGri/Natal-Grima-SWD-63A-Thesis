@@ -37,5 +37,6 @@ Temporary Items
 Dataset/
 YOLO-LABEL/
 yolov7/
-
+yolov7/
+NeededForColab/dataset.zip
 # End of https://www.toptal.com/developers/gitignore/api/macos

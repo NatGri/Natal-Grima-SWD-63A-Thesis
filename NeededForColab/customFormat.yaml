@@ -1,0 +1,10 @@
+train: ./inference/Fruits_and_Vegetables/train
+val: ./inference/Fruits_and_Vegetables/test
+
+#Classes
+nc: 30
+
+#Classes names
+names: ['apple', 'banana', 'beetroot', 'bell pepper', 'cabbage', 'carrot', 'cauliflower', 'chilli pepper', 'corn', 'cucumber', 'eggplant',
+        'garlic', 'ginger', 'grapes', 'kiwi', 'lemon', 'lettuce', 'mango', 'onion', 'orange', 'pear', 'pineapple', 'pomegranate', 'potato', 'radish',
+        'spinach', 'sweet potato', 'tomato', 'turnip', 'watermelon']
