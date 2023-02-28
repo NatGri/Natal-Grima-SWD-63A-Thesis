@@ -37,6 +37,10 @@ Temporary Items
 Dataset/
 YOLO-LABEL/
 yolov7/
-yolov7/
-NeededForColab/dataset.zip
+NeededForColab/
+Paper/
+TFJSModels
+Code/models
+Code/Dataset
+Code/yolov5-master
 # End of https://www.toptal.com/developers/gitignore/api/macos
