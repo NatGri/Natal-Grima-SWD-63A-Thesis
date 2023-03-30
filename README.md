@@ -17,3 +17,6 @@ Tensorflow - Un-Supervised Learning
 
 ###### App Framework:
 Python Application
+
+###### Limitation:
+Hybrid application approach proved to be difficult to implement, thus, based on mentor guidance I am now opting a Python Application that is ran through my Laptop as a final Prototype.
