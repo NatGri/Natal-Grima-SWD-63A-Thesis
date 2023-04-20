@@ -32,12 +32,13 @@ class Nutrition:
         self.webcam()
 
     def title_bar(self):
-        title_bar = tk.Frame(self.__window, bg='BLACK', pady=20, padx=20, width=self.__win_width, height=80)
+        title_bar = tk.Frame(self.__window, bg='#2D6CFC', pady=20, padx=20, width=self.__win_width, height=80)
         title_bar.pack(side=TOP)
         title_bar.pack_propagate(0)
 
-        title = tk.Label(title_bar, text='Nutrition Application', font=('Times New Roman', 20, BOLD), fg='WHITE',
-                         bg='BLACK')
+        title = tk.Label(title_bar, text='Kindly Place Fruit In Front of Camera and Press the Nutritional Information Button!',
+                         font=('Times New Roman', 18, BOLD), fg='WHITE',
+                         bg='#2D6CFC')
 
         title.pack(side=LEFT)
 
@@ -52,7 +53,7 @@ class Nutrition:
 
         img_lbl = tk.Label(camera_frame, border=0, background='WHITE', width=widgets_width,
                            height=int(self.__win_height / 1.5))
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(1)
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
@@ -65,18 +66,20 @@ class Nutrition:
 
         def detection_result():
             # Stop Webcam:
-            self.__capturing = False
-            cap.release()
+            #self.__capturing = False
+            #cap.release()
             # Disable button so that the user can not spam click it
-            btn["state"] = DISABLED
+            #btn["state"] = DISABLED
 
             # Output:
-            detect_output = detect('./assets/model/model.tflite', './assets/imageTaken/')
+            detect_output = detect('./assets/model/my_h5_model.h5', './assets/imageTaken/takenImage.jpg')
             self.display_prediction(detect_output)
 
         # On Click:
-        btn = tk.Button(camera_frame, text="Detections", height=self.__win_height, command=detection_result,
-                        fg='BLACK', pady=5, padx=5, border=0, highlightthickness=0)
+        btn = tk.Button(camera_frame, text='Nutritional\nInformation',
+                        height=self.__win_height, width=250,
+                        command=detection_result,
+                        fg='#2D6CFC', pady=15, padx=15, border=0, highlightthickness=0)
 
         def create_img_label(frame):
             cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)

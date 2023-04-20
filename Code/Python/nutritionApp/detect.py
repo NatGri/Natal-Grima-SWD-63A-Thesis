@@ -1,16 +1,27 @@
+import keras.models
 import numpy as np
 import tensorflow as tf
 import cv2
 import pathlib
 
 # Classes:
-classes = np.array(['apple', 'banana', 'beetroot', 'bellpepper', 'cabbage', 'carrot', 'cauliflower', 'chilli pepper',
-                    'corn', 'cucumber', 'eggplant', 'garlic', 'ginger', 'grapes', 'kiwi', 'lemon', 'lettuce',
-                    'mango', 'onion', 'orange', 'pear', 'pineapple', 'pomegranate', 'potato', 'radish',
-                    'spinach', 'sweet potato', 'tomato', 'turnip', 'watermelon'])
-
+classes2 = np.array(['apple', 'banana', 'carrot', 'kiwi', 'lettuce', 'orange'])
 
 def detect(model_path, image_path):
+    loadedModel = keras.models.load_model(model_path)
+
+    # Image Conversion:
+    imageTransform = tf.keras.utils.load_img(image_path, target_size=(224, 224))
+    image_array = tf.keras.utils.img_to_array(imageTransform)
+    image_array = tf.expand_dims(image_array, 0)
+    prediction = loadedModel.predict(image_array)
+    predictionScore = tf.nn.softmax(prediction[0])
+
+    print(np.argmax(predictionScore))
+    print(100 * np.max(predictionScore))
+
+    return classes2[np.argmax(predictionScore)]
+def detect2(model_path, image_path):
     # Load Model:
     interpreter = tf.lite.Interpreter(model_path=model_path)
 
@@ -47,7 +58,7 @@ def detect(model_path, image_path):
         print('index')
         print(output_index)
         print('class')
-        print(classes[output_index])
+        print(classes2[output_index])
 
         # Return:
-        return classes[output_index]
+        return classes2[output_index]
