@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 4
+names: ['apple', 'banana', 'carrot', 'orange']
+
+roboflow:
+  workspace: natal-grima
+  project: coco-validation
+  version: 1
+  license: MIT
+  url: https://universe.roboflow.com/natal-grima/coco-validation/dataset/1

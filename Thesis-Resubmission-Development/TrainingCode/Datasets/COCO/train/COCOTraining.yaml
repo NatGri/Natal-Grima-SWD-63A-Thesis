@@ -1,0 +1,5 @@
+train: C:\Users\Natal\Documents\GitHub\Natal-Grima-SWD-63A-Thesis\Thesis-Resubmission-Development\TrainingCode\Datasets\COCO\train\train
+val: C:\Users\Natal\Documents\GitHub\Natal-Grima-SWD-63A-Thesis\Thesis-Resubmission-Development\TrainingCode\Datasets\COCO\validation\valid
+
+nc: 3
+names: ['apple', 'banana', 'carrot', 'orange']

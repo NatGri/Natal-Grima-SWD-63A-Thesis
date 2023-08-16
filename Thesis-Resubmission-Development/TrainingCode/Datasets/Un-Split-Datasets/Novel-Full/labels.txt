@@ -1,0 +1,10 @@
+apple
+banana
+carrot
+orange
+cheese-stick
+doritos
+greek-yoghurt
+babybel
+oreos
+protein-bar
