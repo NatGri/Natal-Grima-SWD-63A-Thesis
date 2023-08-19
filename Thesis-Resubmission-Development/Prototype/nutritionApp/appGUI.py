@@ -26,13 +26,15 @@ class Nutrition:
         x_pos = int((screen_width - self.__win_width) / 2)
         y_pos = int((screen_height - self.__win_height) / 2)
 
-        self.__window.geometry(f'{self.__win_width}x{self.__win_height}+{x_pos}+{y_pos}')
+        self.__window.geometry(
+            f'{self.__win_width}x{self.__win_height}+{x_pos}+{y_pos}')
 
         self.title_bar()
         self.webcam()
 
     def title_bar(self):
-        title_bar = tk.Frame(self.__window, bg='#2D6CFC', pady=20, padx=20, width=self.__win_width, height=80)
+        title_bar = tk.Frame(self.__window, bg='#2D6CFC',
+                             pady=20, padx=20, width=self.__win_width, height=80)
         title_bar.pack(side=TOP)
         title_bar.pack_propagate(0)
 
@@ -44,7 +46,8 @@ class Nutrition:
 
     def webcam(self):
         # Config - Frame
-        camera_frame = tk.Frame(self.__window, bg='WHITE', width=self.__win_width, height=self.__win_height)
+        camera_frame = tk.Frame(self.__window, bg='WHITE',
+                                width=self.__win_width, height=self.__win_height)
         camera_frame.pack(side=TOP)
         camera_frame.propagate(0)
 
@@ -61,18 +64,14 @@ class Nutrition:
         def take_picture():
             if cap.isOpened():
                 _, frame = cap.read()
-                cv2.imwrite('./assets/imageTaken/takenImage.jpg', frame)
+                cv2.imwrite(
+                    '/Users/natalgrima/School/Natal-Grima-SWD-63A-Thesis/Thesis-Resubmission-Development/Prototype/nutritionApp/assets/imageTaken/takenImage.jpg', frame)
                 create_img_label(frame)
 
         def detection_result():
-            # Stop Webcam:
-            #self.__capturing = False
-            #cap.release()
-            # Disable button so that the user can not spam click it
-            #btn["state"] = DISABLED
-
             # Output:
-            detect_output = detect('./assets/model/my_h5_model.h5', './assets/imageTaken/takenImage.jpg')
+            detect_output = detect(
+                '/Users/natalgrima/School/Natal-Grima-SWD-63A-Thesis/Thesis-Resubmission-Development/Prototype/nutritionApp/assets/model/best.pt', '/Users/natalgrima/School/Natal-Grima-SWD-63A-Thesis/Thesis-Resubmission-Development/Prototype/nutritionApp/assets/imageTaken/takenImage.jpg')
             self.display_prediction(detect_output)
 
         # On Click:
@@ -97,7 +96,49 @@ class Nutrition:
         img_lbl.pack(side=LEFT)
         btn.pack(side=RIGHT)
 
-    def display_prediction(self, detection):
+    def display_prediction(self, detections):
+        predictions = tk.Toplevel(self.__window, background='#ababab')
+        predictions.title(f"Your Predictions")
+        predictions.propagate(0)
+
+        print(f"detections: {detections}")
+
+        for detection in detections:
+            item_frame = tk.Frame(predictions)
+            item_frame.pack(fill=tk.X, padx=10, pady=5)
+
+            label = tk.Label(item_frame, text=detection)
+            label.pack(side=tk.LEFT)
+
+            button = tk.Button(item_frame, text="Macros",
+                               command=lambda i=detection: nutrition_retrieval(i))
+            button.pack(side=tk.LEFT)
+
+        def nutrition_retrieval(item):
+            # I think this needs t ochange since it is not top level
+            item_window_2 = tk.Toplevel()
+            item_window_2.title(item)
+
+            label = tk.Label(item_window_2, text=f"Details for: {item}")
+            label.pack(padx=20, pady=10)
+
+            nutritionHeaders = ['Serving Size (in grams)', 'Calories', 'Fat', 'Cholesterol', 'Sodium', 'Carbohydrates',
+                                'Sugars', 'Protein']
+            nutritionResults = apiResults(item)
+
+            row = 1
+            for x in range(8):
+                print(nutritionHeaders[x], ':', nutritionResults[x])
+                item_lbl = tk.Label(item_window_2, text=f'{nutritionHeaders[x]}:', fg='WHITE', bg='#ababab',
+                                    font=('Times New Roman', 17, BOLD), padx=10)
+                value_lbl = tk.Label(item_window_2, text=f'{nutritionResults[x]}', bg='#ababab', fg='WHITE',
+                                     font=('Times New Roman', 17, BOLD), padx=10)
+
+                item_lbl.grid(row=row, column=0, sticky=NW)
+                value_lbl.grid(row=row, column=1, sticky=NE)
+                row += 1
+
+    def display_predictionOld(self, detection):
         predictions = tk.Toplevel(self.__window, background='#ababab')
         predictions.title(f"Your Predictions")
         predictions.propagate(0)
@@ -123,8 +164,10 @@ class Nutrition:
                          font=('Times New Roman', 20, BOLD), pady=10)
         title.pack()
 
-        predictions_list = tk.Frame(predictions, bg='#ababab', border=0, highlightthickness=0, pady=5)
-        predictions_list.columnconfigure(0, minsize=int(win_width / 1.5), weight=1)
+        predictions_list = tk.Frame(
+            predictions, bg='#ababab', border=0, highlightthickness=0, pady=5)
+        predictions_list.columnconfigure(
+            0, minsize=int(win_width / 1.5), weight=1)
         predictions_list.rowconfigure(15, minsize=win_height)
         predictions_list.pack()
 
@@ -144,8 +187,6 @@ class Nutrition:
             item_lbl.grid(row=row, column=0, sticky=NW)
             value_lbl.grid(row=row, column=1, sticky=NE)
             row += 1
-
-
 
     def start(self):
         self.__window.mainloop()
