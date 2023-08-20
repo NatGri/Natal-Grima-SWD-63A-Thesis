@@ -115,9 +115,9 @@ class Nutrition:
             button.pack(side=tk.LEFT)
 
         def nutrition_retrieval(item):
-            # I think this needs t ochange since it is not top level
-            item_window_2 = tk.Toplevel()
-            item_window_2.title(item)
+            item_window_2 = tk.Toplevel(self.__window, background='#ababab')
+            item_window_2.title(f"Dietary Macros for: {item}")
+            item_window_2.propagate(0)
 
             label = tk.Label(item_window_2, text=f"Details for: {item}")
             label.pack(padx=20, pady=10)
