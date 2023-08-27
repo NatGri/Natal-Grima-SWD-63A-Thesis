@@ -1,0 +1,5 @@
+train: C:\Users\Natal\Documents\GitHub\Natal-Grima-SWD-63A-Thesis\Thesis-Resubmission-Development\TrainingCode\Datasets\Split-Datasets\Novel-Full-Augmented\train
+val: C:\Users\Natal\Documents\GitHub\Natal-Grima-SWD-63A-Thesis\Thesis-Resubmission-Development\TrainingCode\Datasets\Split-Datasets\Novel-Full-Augmented\val
+
+nc: 9
+names: ['apple', 'babybel', 'banana', 'carrot', 'cheese-stick', 'doritos', 'greek-yoghurt', 'orange', 'oreos', 'protein-bar']

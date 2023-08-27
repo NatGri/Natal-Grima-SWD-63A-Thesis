@@ -1,0 +1,9 @@
+train: C:\Users\Natal\Documents\GitHub\Natal-Grima-SWD-63A-Thesis\Thesis-Resubmission-Development\Alvin\Datasets\train
+val: C:\Users\Natal\Documents\GitHub\Natal-Grima-SWD-63A-Thesis\Thesis-Resubmission-Development\Alvin\Datasets\val
+test: C:\Users\Natal\Documents\GitHub\Natal-Grima-SWD-63A-Thesis\Thesis-Resubmission-Development\Alvin\Datasets\test
+
+# number of classes
+nc: 5
+
+# class names
+names: [ 'reef_1', 'reef_2', 'reef_3', 'reef_4', 'reef_5' ]
