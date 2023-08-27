@@ -101,6 +101,16 @@ class Nutrition:
         predictions.title(f"Your Predictions")
         predictions.propagate(0)
 
+        win_width = 500
+        win_height = 500
+
+        screen_width = self.__window.winfo_screenwidth()
+        screen_height = self.__window.winfo_screenheight()
+        x_pos = int((screen_width - win_width) / 2)
+        y_pos = int((screen_height - win_height) / 2)
+
+        predictions.geometry(f'{win_width}x{win_height}+{x_pos}+{y_pos}')
+
         print(f"detections: {detections}")
 
         for detection in detections:
@@ -119,7 +129,16 @@ class Nutrition:
             item_window_2.title(f"Dietary Macros for: {item}")
             item_window_2.propagate(0)
 
-            label = tk.Label(item_window_2, text=f"Details for: {item}")
+            win_width = 500
+            win_height = 500
+
+            screen_width = self.__window.winfo_screenwidth()
+            screen_height = self.__window.winfo_screenheight()
+            x_pos = int((screen_width - win_width) / 2)
+            y_pos = int((screen_height - win_height) / 2)
+
+            item_window_2.geometry(f'{win_width}x{win_height}+{x_pos}+{y_pos}')
+
             label.pack(padx=20, pady=10)
 
             nutritionHeaders = ['Serving Size (in grams)', 'Calories', 'Fat', 'Cholesterol', 'Sodium', 'Carbohydrates',
