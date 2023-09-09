@@ -1,0 +1,7 @@
+Remember to mention that you tried 2 diff epochs based on papers, however, due to size of dataset it did not prove fruitful.
+
+For coco tried making the weights larger to see improvement however, due to the size of dataset the computer was running out of memory.
+
+for results:
+qualitative results - show pictures 
+quantitative results - show the maths clair showed with excel -> model results
